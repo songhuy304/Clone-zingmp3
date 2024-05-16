@@ -1,0 +1,19 @@
+// index.js
+export { default as KhamPha } from './svg/KhamPha';
+export { default as ThuVien } from './svg/ThuVien';
+export { default as Zingchart } from './svg/Zingchart';
+export { default as Radio } from './svg/Radio';
+export { default as Album } from './svg/Album';
+export { default as Bxh } from './svg/Bxh';
+export { default as Chude } from './svg/Chude';
+export { default as Ganday } from './svg/Ganday';
+export { default as Top100 } from './svg/Top100';
+export { default as YeuThich } from './svg/YeuThich';
+export { default as Playlist } from './svg/Playlist';
+export { default as Favourite } from './svg/Favourite';
+export { default as More } from './svg/More';
+export { default as Shuffle } from './svg/Shuffle';
+export { default as Prev } from './svg/Prev';
+export { default as Forward } from './svg/Forward';
+export { default as Play } from './svg/Play';
+export { default as Pause } from './svg/Pause';
