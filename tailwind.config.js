@@ -4,31 +4,20 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [
+  plugins: [ 
+
     function ({ addUtilities }) {
       const newUtilities = {
-        ".scrollbar-thin": {
-          "scrollbar-width": "none",
-          "scrollbar-color": "rgb(31 29 29) white",
+        '.text-stroke': {
+          '-webkit-text-stroke': '1px black',
         },
-        ".scrollbar-webkit": {
-          "&::-webkit-scrollbar": {
-            width: "6px",
-            backgroundColor: "rgb(31 41 55)",
-            borderRadius: "20px",
-            border: "1px solid white",
-          },
-          "&::-webkit-scrollbar-track": {
-            background: "white",
-          },
-          "&::-webkit-scrollbar-thumb": {
-            backgroundColor: "rgb(31 41 55)",
-            borderRadius: "20px",
-            border: "1px solid white",
-          },
+        '.text-stroke-2': {
+          '-webkit-text-stroke': '2px black',
         },
+        // Thêm các lớp tiện ích khác nếu cần
       };
-      addUtilities(newUtilities, ["responsive", "hover"]);
+
+      addUtilities(newUtilities, ['responsive', 'hover']);
     },
     // require('tailwind-scrollbar'),
   ],

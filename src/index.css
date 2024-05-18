@@ -4,3 +4,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    .bg-custom-gradient {
+        background: linear-gradient(
+          rgba(23, 15, 35, 0.666),
+          rgba(23, 15, 35, 0.666)
+        );
+      }
+  }
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    /* background: #888; */
+    background-image: linear-gradient(to right, transparent, transparent);
+    border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to right, transparent, transparent);
+    border-radius: 5px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    cursor:pointer; 
+}

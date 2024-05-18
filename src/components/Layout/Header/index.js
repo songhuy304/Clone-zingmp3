@@ -9,10 +9,9 @@ import { LuSettings } from "react-icons/lu";
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);
-  
   useEffect(() => {
     const onScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -25,13 +24,13 @@ function Header() {
   return (
     <div
       className={`${
-        scrolled ? "bg-[#fff]" : "bg-transparent"
-      } sticky shadow-xl z-10 top-0 h-[70px] ease-linear duration-100 w-full `}
+        scrolled ? "shadow-xl bg-custom-gradient" : ""
+      } sticky z-10 top-0 h-[70px] backdrop-blur-[50px] px-14 transition-all duration-300 w-full `}
     >
       <div className="flex flex-grow items-center justify-between shadow-2 py-4">
         <Search />
         <div className="flex gap-5 items-center justify-center">
-          <div className="flex gap-3">
+          <div className="hidden lg:flex gap-3">
             <Button>Nâng Cấp Tài Khoản</Button>
             <Button2>Tải Bản Window</Button2>
             <Tippy content="Settings">

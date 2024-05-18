@@ -13,6 +13,7 @@ import {
 } from "~/assets/index";
 import Home from "~/page/Home/Home";
 import Favourite from "~/page/Favourite/index";
+import SingerDetail from "~/page/Singer";
 
 export const links = [
   {
@@ -103,4 +104,13 @@ export const links = [
     component: Home,
     layout: 3,
   },
+  {
+    name: "Playlist",
+    path: "/:slug_name_singer",
+    link: true,
+    icon: <Playlist className="w-6 h-6" />,
+    component: SingerDetail,
+    layout: 0,
+  },
+
 ];

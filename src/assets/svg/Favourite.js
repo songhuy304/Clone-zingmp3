@@ -4,11 +4,11 @@ import 'tippy.js/dist/tippy.css'; // optional
 export default function Favourite({height , width}) {
   return (
     <Tippy content="Thêm vào thư viện">
-      <button className="rounded-full p-3 text-white hover:bg-[#273143]">
+      <button className="rounded-full p-1 lg:p-3 text-white hover:bg-[#273143]">
         <svg
           stroke="currentColor"
           fill="currentColor"
-          stroke-width="0"
+          strokeWidth="0"
           viewBox="0 0 512 512"
           height="1em"
           width="1em"

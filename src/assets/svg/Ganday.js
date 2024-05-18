@@ -24,8 +24,8 @@ export default function Ganday() {
           y2="24"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#8E4CFF"></stop>
-          <stop offset="1" stop-color="#7729FF"></stop>
+          <stop stopColor="#8E4CFF"></stop>
+          <stop offset="1" stopColor="#7729FF"></stop>
         </linearGradient>
       </defs>
     </svg>
