@@ -6,33 +6,57 @@
 @tailwind utilities;
 
 @layer utilities {
-    .bg-custom-gradient {
-        background: linear-gradient(
-          rgba(23, 15, 35, 0.666),
-          rgba(23, 15, 35, 0.666)
-        );
-      }
+  .bg-custom-gradient {
+    background: linear-gradient(
+      rgba(23, 15, 35, 0.666),
+      rgba(23, 15, 35, 0.666)
+    );
   }
+
+  /* Wave animation keyframes */
+  @keyframes wave {
+    0%, 100% {
+      height: 20%;
+      transform: translateY(80%);
+    }
+    50% {
+      height: 100%;
+      transform: translateY(0%);
+    }
+  }
+
+  .animate-wave {
+    animation: wave 1s infinite ease-in-out;
+  }
+
+  .delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+}
+
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
- 
+
 /* Track */
 ::-webkit-scrollbar-track {
-    /* background: #888; */
-    background-image: linear-gradient(to right, transparent, transparent);
-    border-radius: 5px;
+  background-image: linear-gradient(to right, transparent, transparent);
+  border-radius: 5px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(to right, transparent, transparent);
-    border-radius: 5px;
+  background-image: linear-gradient(to right, transparent, transparent);
+  border-radius: 5px;
 }
- 
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-    cursor:pointer; 
+  background: #555;
+  cursor: pointer; 
 }

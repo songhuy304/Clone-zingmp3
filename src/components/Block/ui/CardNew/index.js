@@ -5,8 +5,6 @@ import { extractDate, renderSingerLinks } from '~/contanst';
 
 export default function CardNew({data , index ,classname}) {
     const CreateTime =  extractDate(data?.createdAt);
-
-
     return (
       <div
         className={`${classname} w-[380px] flex p-[5px] rounded-md shadow-lg cursor-pointer text-white bg-[#323c4d] group`}

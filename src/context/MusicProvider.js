@@ -22,17 +22,31 @@ export function useMusicPlayer() {
   });
 
 
-  useEffect(() => {
-    if (audioSettings.isPlaying) {
-      audioRef?.current.play();
-    } else {
-      audioRef?.current.pause();
+  // useEffect(() => {
+  //   if (audioSettings.isPlaying) {
+  //     audioRef?.current.play();
+  //   } else {
+  //     audioRef?.current.pause();
+  //   }
+  // });
+
+  const handlePlaying = async (song) => {
+    setAudio((prevSettings) => ({
+      ...prevSettings,
+      songs: song,
+      isPlaying: true,
+    }));
+    if (audioRef.current) {
+      audioRef.current.src = song.src_music;
+      audioRef.current.load(); // Load the new audio source
+      audioRef.current.oncanplaythrough = async () => {
+        await audioRef.current.play();
+      };
     }
-  });
 
+  }
 
-
-  const handlePlayingPause = async () => {
+  const handlePlayingPause = async (song , trackList) => {
     if (audioRef?.current) {
       if (!audioSettings.isPlaying) { // Thay đổi ở đây
         if (audioRef.current.readyState >= 2) {
@@ -169,5 +183,6 @@ export function useMusicPlayer() {
     handleOnclickVolumeChange,
     handleSkipForward,
     formatDuration,
+    handlePlaying
   };
 }

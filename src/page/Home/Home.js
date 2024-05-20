@@ -9,7 +9,7 @@ import NewMusic from '~/components/Block/Newmusic';
 function Home() {
   
   return (
-    <div className="h-full pt-6 px-4 md:px-14 w-full">
+    <div className="h-full pt-20 px-4 md:px-14 w-full">
       <Banner />
 
       <div className='mt-12'>
@@ -22,7 +22,7 @@ function Home() {
       <div className='mt-12'>
         <NewMusic />
       </div>
-
+   
     </div>
   );
 }

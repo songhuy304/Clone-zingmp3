@@ -38,9 +38,9 @@ useEffect(() => {
 
   return (
     <>
-      <div className="flex justify-between">
-        <h3 className="mb-5 text-xl text-white font-bold">Top View</h3>
-        <div className="flex gap-2 text-white uppercase font-medium opacity-70 cursor-pointer hover:opacity-100">
+      <div className="mb-5 items-center flex justify-between">
+        <h3 className="text-xl text-white font-bold">Top View</h3>
+        <div className="flex items-center gap-2 text-white uppercase font-medium opacity-70 cursor-pointer hover:opacity-100">
           <span>Tất Cả</span>
           <FaArrowRight />
         </div>

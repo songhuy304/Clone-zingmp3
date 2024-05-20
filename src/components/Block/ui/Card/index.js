@@ -4,36 +4,44 @@ import { Link } from "react-router-dom";
 import { Play , More , Favourite } from "~/assets";
 import { renderSingerLinks } from "~/contanst";
 import { useMusicCommon } from "~/context/MusicContext";
+import {ButtonWave} from "~/components/Block/ui";
+
 export default function CardItem({data , loading}) {
   const {
     audioSettings,
-    setAudio,
+    handlePlaying,
   } = useMusicCommon();
   const { songs } = audioSettings;
-  const handleButtonClick = (item) => {
-    setAudio((prev) => ({
-      ...prev,
-      songs: item,
-    }));
-  };
+  const isTrue = JSON.stringify(songs) === JSON.stringify(data)
 
   return (
     <div className="max-w-[200px] w-full overflow-hidden">
       <div className="max-w-[200px] max-h-[200px] relative rounded-lg cursor-pointer overflow-hidden group">
         <Link to="/" className="block">
           <img
-            className="w-full h-full object-contain cursor-pointer duration-300 group-hover:brightness-75 group-hover:scale-110 transition-transform"
+            className={`${
+              isTrue ? "brightness-75" : ""
+            } w-full h-full object-contain cursor-pointer duration-300 group-hover:brightness-75 group-hover:scale-110 transition-transform`}
             src={data?.image_music}
             alt="Sunset in the mountains"
           />
         </Link>
-        <div className="absolute inset-0 flex gap-3 items-center text-white justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        <div
+          className={`${
+            isTrue ? "opacity-100" : ""
+          } absolute inset-0 flex gap-3 items-center text-white justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}
+        >
           <span className="pointer-events-auto">
             <Favourite />
           </span>
-          <span className="pointer-events-auto hover:opacity-85">
-            <Play />
-          </span>
+          {isTrue ? (
+            <ButtonWave isButton={true} />
+          ) : (
+            <span  onClick={() => handlePlaying(data)} className="pointer-events-auto hover:opacity-85">
+              <Play />
+            </span>
+          )}
+
           <span className="pointer-events-auto">
             <More />
           </span>

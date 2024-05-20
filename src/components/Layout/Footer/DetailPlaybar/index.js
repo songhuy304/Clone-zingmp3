@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Favourite , More} from '~/assets'
+import { renderSingerLinks } from '~/contanst';
 import { useMusicCommon } from '~/context/MusicContext';
 export default function DetailPlaybar() {
   const { audioSettings } = useMusicCommon();
   const { name_music , image_music , name_singer , slug_name_singer } = audioSettings?.songs;
-
+  
 
   return (
     <>
@@ -22,12 +23,11 @@ export default function DetailPlaybar() {
         <span className="line-clamp-1 cursor-pointer text-sm font-semibold text-[#EBEBEB] hover:underline md:line-clamp-2">
           {name_music || 'Lỗi'}
         </span>
-        <Link to={`/${slug_name_singer}`}
-          href="/"
-          className="line-clamp-1 cursor-pointer text-gray-600 text-xs font-semibold hover:underline hover:opacity-100"
-        >
-         {name_singer || 'Lỗi'}
-        </Link>
+        <div className='line-clamp-1'>
+        {renderSingerLinks(name_singer)}
+
+        </div>
+       
       </div>
       <div className="flex items-center justify-center">
         <Favourite />
