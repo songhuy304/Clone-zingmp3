@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { toast  } from 'react-toastify';
+import React from 'react';
 import Banner from '~/components/Block/Banner'
 import BanMuonNghe from '~/components/Block/BannerBanMuonNghe';
 import NewSong from '~/components/Block/NewSong';

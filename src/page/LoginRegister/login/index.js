@@ -1,8 +1,30 @@
 import React, { useState } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
 import { useAuth } from '~/context/AuthContext';
+import { accountApi } from '~/Api'
+import { toast  } from 'react-toastify';
 export default function Modallogin() {
   const { toggleModal , setSwap } = useAuth();
+  const [email , setEmail] = useState('');
+  const [password , setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const LoginHandle = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await accountApi.Login(email, password);
+      console.log("🚀 ~ LoginHandle ~ response:", response);
+      if (response.success) {
+      } else {
+        setError(response.message);
+        toast(response.message);
+      }
+    } catch (error) {
+      console.error('Đã xảy ra lỗi khi đăng nhập:', error);
+      setError("Đã xảy ra lỗi khi đăng nhập. Vui lòng thử lại sau.");
+    }
+  }
+  
   return (
     <>
       <div className="w-full max-w-md sm:max-w-lg rounded-lg flex flex-col p-5 bg-[#130c1c]">
@@ -20,7 +42,7 @@ export default function Modallogin() {
               htmlFor="email"
               className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
             >
-              Email Address
+              Email
             </label>
             <input
               type="email"
@@ -29,6 +51,8 @@ export default function Modallogin() {
               placeholder="your@email.com"
               required
               autoComplete="off"
+              value={email}
+              onChange={(e) =>setEmail(e.target.value) }
             />
           </div>
           <div className="text-white mb-4">
@@ -45,6 +69,9 @@ export default function Modallogin() {
               placeholder="Enter your password"
               required
               autoComplete="off"
+              value={password}
+              onChange={(e) =>setPassword(e.target.password)}
+                
             />
           </div>
           <div className="flex items-center justify-between mb-4">
@@ -71,7 +98,7 @@ export default function Modallogin() {
           </div>
 
           <button
-            type="submit"
+            onClick={LoginHandle}
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             Login

@@ -5,7 +5,7 @@ import Tippy from "@tippyjs/react";
 import { useMusicCommon } from "~/context/MusicContext";
 import { formatDuration } from "~/contanst";
 import 'react-h5-audio-player/lib/styles.css';
-import ReactAudioPlayer  from 'react-h5-audio-player';
+import AudioPlayer  from 'react-h5-audio-player';
 
 export default function ControlMid() {
   const {
@@ -42,7 +42,7 @@ export default function ControlMid() {
   return (
     <>
       <div className="flex flex-col items-center justify-center gap-1">
-        <div className="flex gap:1 lg:gap-6 flex-1">
+        <div className="flex gap:1 lg:gap-6 items-center flex-1">
           <Tippy content="Phát Lại">
             <button className="hidden lg:inline-block rounded-full py-[2px] px-3 text-white hover:bg-[#273143]">
               <Shuffle />
@@ -58,14 +58,15 @@ export default function ControlMid() {
             onClick={handlePlayingPause}
             className="rounded-full p-[3px] text-white hover:text-[#158370]"
           >
-            {audioSettings.isPlaying ?<Pause />   : <Play /> }
+            {audioSettings.isPlaying ? <Pause /> : <Play />}
           </button>
-          <button className="rounded-full py-[2px] px-3 text-white hover:bg-[#273143]">
-            <Forward />
-          </button>
-          <button className="hidden lg:inline-block rounded-full py-[2px] px-3  text-white hover:bg-[#273143]">
-            <Forward />
-          </button>
+          <button className="lg:inline-block rounded-full py-1 px-3 text-white hover:bg-[#273143] lg:py-[2px] lg:px-3">
+          <Forward />
+    </button>
+          <button className="hidden lg:inline-block rounded-full py-1 px-3 text-white hover:bg-[#273143] lg:py-[2px] lg:px-3">
+          <Forward />
+</button>
+
         </div>
         <div className="hidden lg:flex items-center justify-between w-full">
           <span className="w-14 text-xs font-semibold text-center text-white opacity-50">
@@ -87,9 +88,10 @@ export default function ControlMid() {
           <span className="w-14 text-xs font-semibold text-center text-white opacity-50">
             {formatDuration(audioSettings.duration)}
           </span>
-          <ReactAudioPlayer 
-            ref={audioSettings.audioRef}
+        
+          <audio
             src={src_music}
+            ref={audioSettings.audioRef}
             onTimeUpdate={(e) => {
               handleOnTimeupdate(e.currentTarget.currentTime);
             }}
@@ -103,22 +105,6 @@ export default function ControlMid() {
             controls
             hidden
           />
-          {/* <audio
-            src={src_music}
-            ref={audioSettings.audioRef}
-            onTimeUpdate={(e) => {
-              handleOnTimeupdate(e.currentTarget.currentTime);
-            }}
-            onLoadedData={(e) => {
-              handleOnLoadData(e.currentTarget.duration);
-            }}
-            onEnded={() => {
-              handleOnEnded(false);
-              handleNextsong();
-            }}
-            controls
-            hidden
-          /> */}
         </div>
       </div>
     </>

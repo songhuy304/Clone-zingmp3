@@ -64,7 +64,5 @@ export const handlegetLocal = () => {
   const songLocal =  localStorage.getItem('song');
   return songLocal;
 }
+ 
 
-export const handleRegister = (userName , password , email) => {
-
-}

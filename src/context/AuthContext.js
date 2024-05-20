@@ -21,20 +21,20 @@ export const AuthProvider = ({ children }) => {
       }
     }, []);
 
+    const SetUser = (userData) => {
+      setUser(userData.data);
+      setAccessToken(userData.accessToken);
+      localStorage.setItem('user', JSON.stringify(userData.data));
+      localStorage.setItem('accessToken', userData.accessToken);
+      setIsModalOpen(false); // Close modal on login
+      setIsLogin(true);
+    };
+    
+
     const toggleModal = () => {
       setIsModalOpen(!isModalOpen);
   };
-    
-
-    const login = (userData) => {
-        setUser(userData.data);
-        setAccessToken(userData.accessToken);
-        localStorage.setItem('user', JSON.stringify(userData.data));
-        localStorage.setItem('accessToken', userData.accessToken);
-        setIsModalOpen(false); // Close modal on login
-        setIsLogin(true);
-    };
-
+   
     const logout = () => {
         setUser();
         setAccessToken(null);
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{user, isLogin, accessToken, login, logout, toggleModal, isModalOpen ,setSwap , swap}}>
+        <AuthContext.Provider value={{user, isLogin, accessToken, logout, toggleModal, isModalOpen ,setSwap , swap}}>
             {children}
         </AuthContext.Provider>
     );

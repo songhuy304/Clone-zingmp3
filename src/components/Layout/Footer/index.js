@@ -10,7 +10,7 @@ function Footer() {
     <div className="fixed bottom-0 right-0 left-0 max-w-full w-full z-50 h-[90px] bg-[#111f3b]">
       <div className="flex items-stretch w-full h-full py-2 px-5">
         {/* Detail song */}
-        <div className="lg:w-[30%] flex-auto flex items-center gap-2 lg:gap-3">
+        <div className="lg:w-[30%] flex-auto flex items-center justify-between gap-2 lg:gap-3">
           <DetailPlaybar />
         </div>
 
