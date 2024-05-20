@@ -56,3 +56,15 @@ export const RenderButtonSelect = (
   });
   return result;
 };
+export const handlesetLocal = (song) => {
+  localStorage.setItem('song', JSON.stringify(song));
+}
+
+export const handlegetLocal = () => {
+  const songLocal =  localStorage.getItem('song');
+  return songLocal;
+}
+
+export const handleRegister = (userName , password , email) => {
+
+}

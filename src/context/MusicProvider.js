@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-
+import { useState, useRef, useEffect  ,memo, useCallback} from 'react';
+import { handlesetLocal } from '~/Feature/handleEvent';
 export function useMusicPlayer() {
   const audioRef = useRef();
 
@@ -20,31 +20,20 @@ export function useMusicPlayer() {
     nextSong: false,
     prevSong: false,
   });
-
-
-  // useEffect(() => {
-  //   if (audioSettings.isPlaying) {
-  //     audioRef?.current.play();
-  //   } else {
-  //     audioRef?.current.pause();
-  //   }
-  // });
-
-  const handlePlaying = async (song) => {
-    setAudio((prevSettings) => ({
-      ...prevSettings,
-      songs: song,
-      isPlaying: true,
-    }));
-    if (audioRef.current) {
-      audioRef.current.src = song.src_music;
-      audioRef.current.load(); // Load the new audio source
-      audioRef.current.oncanplaythrough = async () => {
-        await audioRef.current.play();
-      };
-    }
-
-  }
+  
+  useEffect(() => {
+    const result = localStorage.getItem('song');
+     if (result !== null || result !== undefined){
+       const songData = JSON.parse(result); 
+       setAudio((prevSettings) => ({
+        ...prevSettings,
+        songs: songData, // Sử dụng giá trị mới của isPlaying
+      }));
+     }
+     else{
+       return
+     }
+   },[]);
 
   const handlePlayingPause = async (song , trackList) => {
     if (audioRef?.current) {
@@ -64,11 +53,36 @@ export function useMusicPlayer() {
       console.log('Audio metadata not loaded yet, waiting...');
     }
   };
+  
+  
+  const handlePlaying = useCallback(async (song) => {
+    setAudio((prevSettings) => ({
+      ...prevSettings,
+      songs: song,
+      isPlaying: true,
+    }));
 
+    if (audioRef.current) {
+      const { name_music, image_music, name_singer, slug_name_singer , src_music } = song; // Sử dụng song thay vì audioSettings.songs
+      const songLocal = {
+        src_music,
+        name_music,
+        image_music,
+        name_singer,
+        slug_name_singer,
+      };
 
-
+      handlesetLocal(songLocal); // Đảm bảo hàm handlesetLocal được định nghĩa và có sẵn
+      audioRef.current.src = song.src_music;
+      audioRef.current.load(); // Load the new audio source
+      audioRef.current.oncanplaythrough = async () => {
+        await audioRef.current.play();
+      };
+    }
+  }, []);
+  
   // Hàm Tăng giảm âm lượng
-  const onChangeVolume = (e) => {
+  const onChangeVolume = useCallback((e) => {
     const newVolume = parseFloat(e.target.value) / 100;
     if (audioRef.current) {
       audioRef.current.volume = newVolume;
@@ -86,7 +100,7 @@ export function useMusicPlayer() {
         soundChange: e.target.value,
       }));
     }
-  };
+  }, []);
 
   // Hàm onClickVolume
   const handleOnclickVolumeChange = () => {

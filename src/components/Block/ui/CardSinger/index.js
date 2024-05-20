@@ -13,17 +13,17 @@ export default function CardSinger({data}) {
 
   return (
     <div
-      class={`${
+      className={`${
         JSON.stringify(songs) === JSON.stringify(data)
           ? "bg-[rgba(0,0,0,0.25)]"
           : ""
       } w-full mx-auto p-2 group/item hover:bg-[rgba(0,0,0,0.25)] rounded-lg border-b border-[hsla(0,0%,100%,.1)]`}
     >
-      <div class="flex gap-3 rounded-xl items-center justify-between">
+      <div className="flex gap-3 rounded-xl items-center justify-between">
         <div className="flex gap-3 shrink-[1] grow w-[calc(100%_-_112px)]">
-          <div class="relative w-[40px] h-[40px] rounded-lg overflow-hidden flex-shrink-0">
+          <div className="relative w-[40px] h-[40px] rounded-lg overflow-hidden flex-shrink-0">
             <img
-              class="group-hover/item:brightness-50 w-full h-full object-cover object-center transition duration-50"
+              className="group-hover/item:brightness-50 w-full h-full object-cover object-center transition duration-50"
               loading="lazy"
               src={
                 data?.image_music ||
@@ -40,14 +40,14 @@ export default function CardSinger({data}) {
             ) : (
               <button
                 onClick={() => handlePlaying(data)}
-                class="group/edit invisible group-hover/item:visible absolute inset-0 m-auto flex items-center justify-center w-6 h-6 text-white "
+                className="group/edit invisible group-hover/item:visible absolute inset-0 m-auto flex items-center justify-center w-6 h-6 text-white "
               >
                 <Play />
               </button>
             )}
           </div>
-          <div class="flex flex-col justify-center overflow-hidden leading-tight text-sm w-full">
-            <span class="font-bold text-white hover:text-[#158370]">
+          <div className="flex flex-col justify-center overflow-hidden leading-tight text-sm w-full">
+            <span className="font-bold text-white hover:text-[#158370]">
               {data?.name_music || "Sơ tubfg"}
             </span>
             <div className="line-clamp-1">

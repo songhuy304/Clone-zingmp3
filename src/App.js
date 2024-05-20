@@ -5,7 +5,6 @@ import Layout from './components/Layout';
 import 'keen-slider/keen-slider.min.css'
 import  {SkeletonTheme} from 'react-loading-skeleton';
 
-
 function App() {
   return (
     <SkeletonTheme>

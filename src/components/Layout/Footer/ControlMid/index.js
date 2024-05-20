@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import style from "./index.module.css";
 import { Shuffle, Prev, Forward, Play, Pause } from "~/assets";
 import Tippy from "@tippyjs/react";
 import { useMusicCommon } from "~/context/MusicContext";
 import { formatDuration } from "~/contanst";
+import 'react-h5-audio-player/lib/styles.css';
+import ReactAudioPlayer  from 'react-h5-audio-player';
 
 export default function ControlMid() {
   const {
@@ -35,6 +37,7 @@ export default function ControlMid() {
       isPlaying: value,
     }));
   };
+
 
   return (
     <>
@@ -84,7 +87,23 @@ export default function ControlMid() {
           <span className="w-14 text-xs font-semibold text-center text-white opacity-50">
             {formatDuration(audioSettings.duration)}
           </span>
-          <audio
+          <ReactAudioPlayer 
+            ref={audioSettings.audioRef}
+            src={src_music}
+            onTimeUpdate={(e) => {
+              handleOnTimeupdate(e.currentTarget.currentTime);
+            }}
+            onLoadedData={(e) => {
+              handleOnLoadData(e.currentTarget.duration);
+            }}
+            onEnded={() => {
+              handleOnEnded(false);
+              handleNextsong();
+            }}
+            controls
+            hidden
+          />
+          {/* <audio
             src={src_music}
             ref={audioSettings.audioRef}
             onTimeUpdate={(e) => {
@@ -97,7 +116,9 @@ export default function ControlMid() {
               handleOnEnded(false);
               handleNextsong();
             }}
-          />
+            controls
+            hidden
+          /> */}
         </div>
       </div>
     </>

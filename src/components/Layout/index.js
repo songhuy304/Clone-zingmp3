@@ -5,31 +5,38 @@ import Footer from './Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AudioProvider } from '~/context/MusicContext';
+import { AuthProvider } from '~/context';
+import LoginRegister from '~/page/LoginRegister';
+
 function Layout({children}) {
   return (
     <>
-      <AudioProvider>
-        <div className="flex bg-[#0f1a2e]">
-          <Sidebar />
-          <div className="w-full max-w-screen-xl sm:ml-[64px] lg:ml-[240px] pb-[90px] min-h-screen flex flex-col">
-            <Header />
-            {children}
+      <AuthProvider>
+        <AudioProvider>
+          <div className="flex bg-[#0f1a2e]">
+            <Sidebar />
+            <div className="w-full max-w-screen-xl sm:ml-[64px] lg:ml-[240px] pb-[90px] min-h-screen flex flex-col">
+              <Header />
+              {children}
+            </div>
           </div>
-        </div>
-        <Footer />
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
-      </AudioProvider>
+          <Footer />
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
+
+          <LoginRegister />
+        </AudioProvider>
+      </AuthProvider>
     </>
   );
 }

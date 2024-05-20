@@ -30,23 +30,21 @@ export default function SingerDetail() {
   }
   return (
     <div>
-      <div className="w-full bg-[rgba(16,31,63,0.8)] pt-20 pb-10">
-        <div className="flex px-14">
-          <div className="max-w-[140px] max-h-[140px] overflow-hidden rounded-full mr-8">
+      <div className="w-full bg-[rgba(16,31,63,0.8)] pt-10 md:pt-20 pb-10">
+        <div className="flex flex-col md:flex-row  max-md:items-center max-md:justify-center gap-8 px-14">
+          <div className="max-w-[140px] max-h-[140px] overflow-hidden rounded-full">
             <img
               src="https://photo-resize-zmp3.zmdcdn.me/w240_r1x1_jpeg/avatars/f/b/f/1/fbf16d7352a3eea6be8cf5d4b217516d.jpg"
               alt=""
               className="w-full object-cover"
             />
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col gap-5 justify-center items-center">
             <div className="flex items-center gap-4 ">
-             {/* Lặp qua mảng và hiển thị thuộc tính subscribe */}
-             
-                <h3 className="w-fit text-[60px] font-bold leading-normal text-white">
-                 {userSinger}
-                </h3>
-          
+              {/* Lặp qua mảng và hiển thị thuộc tính subscribe */}
+              <h3 className="w-fit text-2xl md:text-[60px] font-bold leading-normal text-white">
+                {userSinger}
+              </h3>
               <span>
                 <img src="/images/PlaySingger.svg" alt="" />
               </span>
@@ -61,12 +59,11 @@ export default function SingerDetail() {
         </div>
       </div>
       <div className="py-6 px-14">
-        <h3 class="mb-5 text-xl text-white font-bold">Bài Hát Nổi Bật</h3>
-        <div className="grid grid-cols-2 gap-x-2">
-          
-        {dataParam.map((item ,index) => (
-          <CardSinger data={item} key={index} />
-        ))}
+        <h3 className="mb-5 text-xl text-white font-bold">Bài Hát Nổi Bật</h3>
+        <div className="grid-cols-1 grid md:grid-cols-2 gap-x-2">
+          {dataParam.map((item, index) => (
+            <CardSinger data={item} key={index} />
+          ))}
         </div>
       </div>
     </div>
