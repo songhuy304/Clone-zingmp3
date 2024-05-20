@@ -18,31 +18,25 @@ export default function NewMusic() {
         fetchData();
       }, []);
 
-      const [sliderRef, instanceRef] = useKeenSlider(
-        {
-            loop: true,
-            drag: true,
-    
-            slides: {
-                perView: 3,
-                spacing: 15,
+      const [sliderRef, instanceRef] = useKeenSlider({
+        loop: true,
+        drag: true,
+        slides: {
+            perView: 3,
+            spacing: 15,
+        },
+        breakpoints: {
+            '(max-width: 480px)': {
+                slides: { perView: 1, spacing: 10 },
             },
-            breakpoints: {
-                '(max-width: 480px)': {
-                    slides: { perView: 1, spacing: 10 },
-                    drag: true,
-                },
-    
-                '(min-width: 481px)': {
-                    slides: { perView: 2, spacing: 10 },
-                },
-                '(min-width: 1130px)': {
-                    slides: { perView: 3, spacing: 15 },
-                },
+            '(min-width: 481px) and (max-width: 1129px)': {
+                slides: { perView: 2, spacing: 10 },
+            },
+            '(min-width: 1130px)': {
+                slides: { perView: 3, spacing: 15 },
             },
         },
-        
-    );
+    });
       return (
         <>
           <h3 className="mb-5 text-xl text-white font-bold">Mới ra</h3>
