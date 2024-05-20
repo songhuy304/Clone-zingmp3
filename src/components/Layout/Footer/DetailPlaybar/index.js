@@ -5,8 +5,12 @@ import { renderSingerLinks } from "~/contanst";
 import { useMusicCommon } from "~/context/MusicContext";
 export default function DetailPlaybar() {
   const { audioSettings } = useMusicCommon();
-  const { name_music, image_music, name_singer, slug_name_singer } =
-    audioSettings?.songs;
+  const {
+    name_music = '',
+    image_music = '',
+    name_singer = '',
+    slug_name_singer = ''
+} = audioSettings?.songs || {};
 
   return (
     <>
