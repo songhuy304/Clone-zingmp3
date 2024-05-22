@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Play } from '~/assets';
 import { extractDate, renderSingerLinks } from '~/contanst';
 
-export default function CardNew({data , index ,classname}) {
+export default function CardNew({data , index ,classname , listdata}) {
     const CreateTime =  extractDate(data?.createdAt);
     return (
       <div

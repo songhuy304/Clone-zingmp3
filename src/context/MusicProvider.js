@@ -55,10 +55,11 @@ export function useMusicPlayer() {
   };
   
   
-  const handlePlaying = useCallback(async (song) => {
+  const handlePlaying = useCallback(async (song , listdata) => {
     setAudio((prevSettings) => ({
       ...prevSettings,
       songs: song,
+      track:listdata,
       isPlaying: true,
     }));
 
@@ -71,7 +72,6 @@ export function useMusicPlayer() {
         name_singer,
         slug_name_singer,
       };
-
       handlesetLocal(songLocal); // Đảm bảo hàm handlesetLocal được định nghĩa và có sẵn
       audioRef.current.src = song.src_music;
       audioRef.current.load(); // Load the new audio source
@@ -144,16 +144,61 @@ export function useMusicPlayer() {
 
   // Nextbài
   const handleNextsong = () => {
-    setAudio((prev) => ({
-      ...prev,
-      nextSong: true,
-    }));
+    const currentSong = audioSettings.songs;
+    const track = audioSettings.track;
+    const currentAudioIndex = track.findIndex(
+      (song) => JSON.stringify(song) === JSON.stringify(currentSong)
+    );
+
+    if (currentAudioIndex === -1) {
+      return;
+    }
+
+    if (currentAudioIndex < track.length - 1) {
+      const nextSong = track[currentAudioIndex + 1];
+
+      // Cập nhật state cho bài hát tiếp theo
+      setAudio((prev) => ({
+        ...prev,
+        songs: nextSong,
+        isPlaying: true,
+        currentAudioIndex: currentAudioIndex + 1,
+      }));
+      // audioRef.current.play();
+
+    } else {
+      // Nếu bài hát hiện tại là bài hát cuối cùng trong danh sách, quay lại bài đầu tiên
+      setAudio((prev) => ({
+        ...prev,
+        songs: track[0],
+        currentAudioIndex: 0,
+      }));
+    }
   };
   const handlePrevsong = () => {
-    setAudio((prev) => ({
+  const currentSong = audioSettings.songs;
+  const track = audioSettings.track;
+
+  const currentAudioIndex = track.findIndex(song => JSON.stringify(song) === JSON.stringify(currentSong));
+  if (currentAudioIndex === -1) {
+    return;
+  }
+  if (currentAudioIndex > 0) {
+    const prevSong = track[currentAudioIndex - 1];
+    setAudio(prev => ({
       ...prev,
-      prevSong: true,
+      songs: prevSong,
+      currentAudioIndex: currentAudioIndex - 1,
     }));
+    // audioRef.current.play();
+  } else {
+    const lastSongIndex = track.length - 1;
+    setAudio(prev => ({
+      ...prev,
+      songs: track[lastSongIndex],
+      currentAudioIndex: lastSongIndex,
+    }));
+  }
   };
   const handleSkipForward = (direction) => {
     const currentTimeSkip = parseFloat(30);

@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./index.module.css";
-import { Shuffle, Prev, Forward, Play, Pause } from "~/assets";
+import { Shuffle, Prev, Forward, Play, Pause, Phatlai } from "~/assets";
 import Tippy from "@tippyjs/react";
 import { useMusicCommon } from "~/context/MusicContext";
 import { formatDuration } from "~/contanst";
@@ -13,7 +13,7 @@ export default function ControlMid() {
     handleSeek,
     setAudio,
     handleNextsong,
-    handleSkipForward,
+    handlePrevsong,
   } = useMusicCommon();
   const {
     src_music = '',
@@ -44,14 +44,14 @@ export default function ControlMid() {
     <>
       <div className="flex flex-col items-center justify-center gap-1">
         <div className="flex gap:1 lg:gap-6 items-center flex-1">
-          <Tippy content="Phát Lại">
-            <button className="hidden lg:inline-block rounded-full py-[2px] px-3 text-white hover:bg-[#273143]">
+          <Tippy content="Phát ngẫu nhiên">
+            <button className="hidden lg:inline-block rounded-full p-3 text-white hover:bg-[#273143]">
               <Shuffle />
             </button>
           </Tippy>
           <button
-            onClick={handleSkipForward}
-            className="rounded-full lg:py-[2px] lg:px-3 px-2 py-0 text-white hover:bg-[#273143]"
+            onClick={handlePrevsong}
+            className="rounded-[50%] p-3 text-white hover:bg-[#273143]"
           >
             <Prev />
           </button>
@@ -61,12 +61,15 @@ export default function ControlMid() {
           >
             {audioSettings.isPlaying ? <Pause /> : <Play />}
           </button>
-          <button className="lg:inline-block rounded-full py-1 px-3 text-white hover:bg-[#273143] lg:py-[2px] lg:px-3">
+          <button onClick={handleNextsong}
+           className="lg:inline-block rounded-full p-3 text-white hover:bg-[#273143]">
             <Forward />
           </button>
-          <button className="hidden lg:inline-block rounded-full py-1 px-3 text-white hover:bg-[#273143] lg:py-[2px] lg:px-3">
-            <Forward />
-          </button>
+          <Tippy content="Phát Lại">
+            <button className="hidden lg:inline-block rounded-full p-3 text-white hover:bg-[#273143]">
+              <Phatlai />
+            </button>
+          </Tippy>
         </div>
         <div className="hidden lg:flex items-center justify-between w-full">
           <span className="w-14 text-xs font-semibold text-center text-white opacity-50">

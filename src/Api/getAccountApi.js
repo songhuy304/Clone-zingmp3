@@ -9,11 +9,11 @@ export const accountApi = {
     return result;
   },
 
-  async Register(userName, passwordConfirm, email) {
+  async Register(userName, password, email) {
     const result = await httpRequest.post("/account/register/", {
       userName: userName,
       email: email,
-      password: passwordConfirm,
+      password: password,
     });
     return result;
   },

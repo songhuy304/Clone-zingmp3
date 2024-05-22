@@ -1,52 +1,68 @@
 // src/AuthContext.js
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect } from "react";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState();
-    const [isLogin, setIsLogin] = useState(false);
-    const [accessToken, setAccessToken] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [swap, setSwap] = useState('login');
+  const [user, setUser] = useState(null);
+  const [isLogin, setIsLogin] = useState(false);
+  const [accessToken, setAccessToken] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [swap, setSwap] = useState("login");
 
-    
+  useEffect(() => {
+    const storedToken = localStorage.getItem("accessToken");
+    const storedUser = localStorage.getItem("user");
 
-    useEffect(() => {
-      const storeUser = JSON.parse(localStorage.getItem("user"));
-      const storeToken = localStorage.getItem("accessToken");
-      if (storeUser && storeToken) {
-        setUser(storeUser);
-        setAccessToken(accessToken);
-      }
-    }, []);
+    if (storedToken) {
+      setAccessToken(storedToken);
+    }
 
-    const SetUser = (userData) => {
-      setUser(userData.data);
-      setAccessToken(userData.accessToken);
-      localStorage.setItem('user', JSON.stringify(userData.data));
-      localStorage.setItem('accessToken', userData.accessToken);
-      setIsModalOpen(false); // Close modal on login
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
       setIsLogin(true);
-    };
-    
+    }
+  }, []);
 
-    const toggleModal = () => {
-      setIsModalOpen(!isModalOpen);
+  const SetUser = (userData) => {
+    setUser(userData.data);
+    setAccessToken(userData.accessToken);
+    localStorage.setItem("accessToken", userData.accessToken);
+    localStorage.setItem("user", JSON.stringify(userData.data));
+    setIsModalOpen(false); // Close modal on login
+    setIsLogin(true);
   };
-   
-    const logout = () => {
-        setUser();
-        setAccessToken(null);
-        localStorage.removeItem('user');
-        localStorage.removeItem('accessToken');
-    };
 
-    return (
-        <AuthContext.Provider value={{user, isLogin, accessToken, logout, toggleModal, isModalOpen ,setSwap , swap}}>
-            {children}
-        </AuthContext.Provider>
-    );
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+  const logout = () => {
+    window.location.reload();
+    setUser(null);
+    setAccessToken(null);
+    setIsLogin(false);
+    localStorage.removeItem("user");
+    localStorage.removeItem("accessToken");
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        isLogin,
+        accessToken,
+        logout,
+        toggleModal,
+        SetUser,
+        isModalOpen,
+        setSwap,
+        setIsModalOpen,
+        swap,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => useContext(AuthContext);

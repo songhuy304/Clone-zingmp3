@@ -6,7 +6,7 @@ import { renderSingerLinks } from "~/contanst";
 import { useMusicCommon } from "~/context/MusicContext";
 import {ButtonWave} from "~/components/Block/ui";
 
-export default function CardItem({data , loading}) {
+export default function CardItem({listData, data , loading}) {
   const {
     audioSettings,
     handlePlaying,
@@ -37,7 +37,7 @@ export default function CardItem({data , loading}) {
           {isTrue ? (
             <ButtonWave isButton={true} />
           ) : (
-            <span  onClick={() => handlePlaying(data)} className="pointer-events-auto hover:opacity-85">
+            <span  onClick={() => handlePlaying(data, listData)} className="pointer-events-auto hover:opacity-85">
               <Play />
             </span>
           )}

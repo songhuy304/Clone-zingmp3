@@ -17,3 +17,5 @@ export { default as Prev } from './svg/Prev';
 export { default as Forward } from './svg/Forward';
 export { default as Play } from './svg/Play';
 export { default as Pause } from './svg/Pause';
+export { default as SpinnerLoading } from './svg/SpinnerLoading';
+export { default as Phatlai } from './svg/phatlai';

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "~/context/AuthContext";
 
 export default function Dropdown() {
-  const { isLogin, toggleModal, user } = useAuth();
+  const { isLogin, toggleModal, user ,logout } = useAuth();
 
   const handleClick = () => {
     if (!isLogin) {
@@ -21,12 +21,12 @@ export default function Dropdown() {
       >
         <img
           className="flex-shrink-0 object-cover mx-1 rounded-full w-9 h-9"
-          src="https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8d29tYW4lMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=face&w=500&q=200"
+          src={user?.image}
           alt="jane avatar"
         />
         <div className="mx-1">
-          <h1 className="text-sm font-semibold ">.</h1>
-          <p className="text-sm ">.</p>
+          <h1 className="text-sm font-semibold ">{user?.user_name || ""}</h1>
+          <p className="text-sm ">{user ? "xin chào bro" : ""}</p>
         </div>
       </a>
       <hr className="border-gray-200 dark:border-gray-700" />
@@ -34,7 +34,7 @@ export default function Dropdown() {
       <div className="w-full px-3">
         {user ? (
           <button
-            onClick={handleClick}
+            onClick={logout}
             className="mt-2 mb-5 mx-2 bg-[#158370] text-white rounded-[20px] font-semibold leading-5 w-full h-10 "
           >
             Logout

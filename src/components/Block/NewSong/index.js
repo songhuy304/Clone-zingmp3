@@ -52,7 +52,7 @@ useEffect(() => {
       </div>
       <div className="md:grid-cols-3 grid-cols-1 grid  gap-5">
         {dataSliceRenderRender.map((item, index) => (
-          <CardTop key={index} data={item} />
+          <CardTop key={index} listdata={dataSliceRenderRender} data={item} />
         ))}
       </div>
     </>

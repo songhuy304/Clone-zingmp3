@@ -62,7 +62,7 @@ export default function SingerDetail() {
         <h3 className="mb-5 text-xl text-white font-bold">Bài Hát Nổi Bật</h3>
         <div className="grid-cols-1 grid md:grid-cols-2 gap-x-2">
           {dataParam.map((item, index) => (
-            <CardSinger data={item} key={index} />
+            <CardSinger data={item} listdata={dataParam} key={index} />
           ))}
         </div>
       </div>

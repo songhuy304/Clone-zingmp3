@@ -11,7 +11,6 @@ import LoginRegister from '~/page/LoginRegister';
 function Layout({children}) {
   return (
     <>
-      <AuthProvider>
         <AudioProvider>
           <div className="flex bg-[#0f1a2e]">
             <Sidebar />
@@ -36,7 +35,6 @@ function Layout({children}) {
 
           <LoginRegister />
         </AudioProvider>
-      </AuthProvider>
     </>
   );
 }

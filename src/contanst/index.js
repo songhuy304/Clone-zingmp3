@@ -100,7 +100,7 @@ export function extractDate(isoString) {
     return singers.map((singer, index) => (
       <Link
         key={index}
-        // to={`/${singer.replace(/\s+/g, '-').toLowerCase()}`}
+        to={`/${singer.replace(/\s+/g, '-').toLowerCase()}`}
         className="line-clamp-1 inline-block cursor-pointer text-gray-600 text-xs font-semibold hover:underline hover:opacity-100"
       >
         {singer},

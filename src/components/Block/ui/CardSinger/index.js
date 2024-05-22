@@ -4,7 +4,7 @@ import { renderSingerLinks } from '~/contanst';
 import { useMusicCommon } from '~/context/MusicContext';
 import { ButtonWave } from '~/components/Block/ui';
 
-export default function CardSinger({data}) {
+export default function CardSinger({ listdata, data}) {
   const {
     audioSettings,
     handlePlaying,
@@ -39,7 +39,7 @@ export default function CardSinger({data}) {
               </span>
             ) : (
               <button
-                onClick={() => handlePlaying(data)}
+                onClick={() => handlePlaying(data, listdata)}
                 className="group/edit invisible group-hover/item:visible absolute inset-0 m-auto flex items-center justify-center w-6 h-6 text-white "
               >
                 <Play />

@@ -27,7 +27,7 @@ export default function DetailPlaybar() {
         </div>
         <div className="flex flex-col gap-[1px] md:gap-[3px] w-[150px] overflow-hidden lg:max-w-[190px] lg:w-full">
           <span className="line-clamp-1 cursor-pointer text-sm font-semibold text-[#EBEBEB] hover:underline md:line-clamp-2">
-            {name_music || "Lỗi"}
+            {name_music || ""}
           </span>
           <div className="line-clamp-1">{renderSingerLinks(name_singer)}</div>
         </div>

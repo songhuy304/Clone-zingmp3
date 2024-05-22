@@ -10,7 +10,7 @@ export default function BanMuonNghe() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const res = await getMusicFavourite(5, 3);
+        const res = await getMusicFavourite(5, 6);
         setData(res); // Update data state with API response data or an empty array
         setLoading(false);
       } catch (error) {

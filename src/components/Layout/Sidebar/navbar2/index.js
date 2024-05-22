@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-export default function Navbar2({ links, linkActive, setLinkActive }) {
+export default function Navbar2({ links , location}) {
   return (
     <div className="relative overflow-x-auto scroll-container w-full h-full">
       <div className="absolute top-0 left-0 right-0">
@@ -13,11 +13,10 @@ export default function Navbar2({ links, linkActive, setLinkActive }) {
                 <li
                   key={index}
                   className={`${
-                    link.name === linkActive
+                    link.path === location
                       ? "bg-[#323c4d] border-l-4 border-[#158370] opacity-100"
                       : "opacity-80"
                   }  hover:opacity-100 `}
-                  onClick={() => setLinkActive(link.name)}
                 >
                   <Link
                     to={link.path}
@@ -48,11 +47,10 @@ export default function Navbar2({ links, linkActive, setLinkActive }) {
                 <li
                   key={index}
                   className={`${
-                    link.name === linkActive
+                    link.path === location
                       ? "bg-[#323c4d] border-l-4 border-[#158370] opacity-100"
                       : "opacity-80"
                   }  hover:opacity-100 `}
-                  onClick={() => setLinkActive(link.name)}
                 >
                   <Link
                     to={link.path}

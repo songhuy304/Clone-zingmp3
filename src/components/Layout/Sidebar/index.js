@@ -1,13 +1,17 @@
 import React , { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link , useLocation } from 'react-router-dom';
 import { links } from '~/router'
 import Navbar2 from './navbar2';
 import { IoAddCircle } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa6";
 
 const Sidebar = () => {
+
+
+    const Use = useLocation();
+    const location = Use.pathname;
+
     const [open , setOpen] = useState(true);
-    const [linkActive, setLinkActive] = useState("Khám Phá");
   return (
     <div
       className={`
@@ -37,11 +41,10 @@ const Sidebar = () => {
               <li
                 key={index}
                 className={`${
-                  link.name === linkActive
+                  link.path === location
                     ? "bg-[#323c4d] border-l-4 border-[#158370] opacity-100"
                     : "opacity-80"
                 }  hover:opacity-100 `}
-                onClick={() => setLinkActive(link.name)}
               >
                 <Link
                   to={link.path}
@@ -60,8 +63,7 @@ const Sidebar = () => {
       {/* Navbar 2  */}
       <Navbar2
         links={links}
-        linkActive={linkActive}
-        setLinkActive={setLinkActive}
+        location={location}
       />
       <div className="mt-auto border-t-2 border-gray-700">
         <button className="hidden w-full lg:flex gap-4 py-4 items-center justify-center">

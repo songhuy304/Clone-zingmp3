@@ -23,6 +23,7 @@ export const links = [
     icon: <ThuVien className="w-6 h-6" />,
     component: Home,
     layout: 1,
+    protect: true
   },
   {
     name: "Khám Phá",
@@ -31,6 +32,8 @@ export const links = [
     icon: <KhamPha className="w-6 h-6" />,
     component: Home,
     layout: 1,
+    protect: false
+
   },
   {
     name: "Zingchart",
@@ -39,6 +42,8 @@ export const links = [
     icon: <Zingchart className="w-6 h-6" />,
     component: Favourite,
     layout: 1,
+    protect: false
+
   },
   {
     name: "Radio",
@@ -47,6 +52,8 @@ export const links = [
     icon: <Radio className="w-6 h-6" />,
     component: Home,
     layout: 1,
+    protect: false
+
   },
   {
     name: "BXH Nhạc Mới",
@@ -55,6 +62,8 @@ export const links = [
     icon: <Bxh className="w-6 h-6" />,
     component: Home,
     layout: 2,
+    protect: false
+
   },
   {
     name: "Chủ Đề",
@@ -63,6 +72,8 @@ export const links = [
     icon: <Chude className="w-6 h-6" />,
     component: Home,
     layout: 2,
+    protect: false
+
   },
   {
     name: "Top 100",
@@ -71,6 +82,8 @@ export const links = [
     icon: <Top100 className="w-6 h-6" />,
     component: Home,
     layout: 2,
+    protect: false
+
   },
   {
     name: "Nghe Gần Đây",
@@ -79,6 +92,8 @@ export const links = [
     icon: <Ganday className="w-6 h-6" />,
     component: Home,
     layout: 3,
+    protect: true
+
   },
   {
     name: "Bài Hát Yêu Thích",
@@ -87,6 +102,8 @@ export const links = [
     icon: <YeuThich className="w-6 h-6" />,
     component: Home,
     layout: 3,
+    protect: true
+
   },
   {
     name: "Album",
@@ -95,6 +112,8 @@ export const links = [
     icon: <Album className="w-6 h-6" />,
     component: Home,
     layout: 3,
+    protect: false
+
   },
   {
     name: "Playlist",
@@ -103,6 +122,8 @@ export const links = [
     icon: <Playlist className="w-6 h-6" />,
     component: Home,
     layout: 3,
+    protect: false
+
   },
   {
     name: "Playlist",
@@ -111,6 +132,8 @@ export const links = [
     icon: <Playlist className="w-6 h-6" />,
     component: SingerDetail,
     layout: 0,
+    protect: false
+
   },
 
 ];
