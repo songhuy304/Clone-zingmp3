@@ -1,18 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Play , More , Favourite } from "~/assets";
-import { renderSingerLinks } from "~/contanst";
-import { useMusicCommon } from "~/context/MusicContext";
-import {ButtonWave} from "~/components/Block/ui";
 
 export default function CardNgheSi({listData, data , loading}) {
-  const {
-    audioSettings,
-    handlePlaying,
-  } = useMusicCommon();
-  const { songs } = audioSettings;
-  const isTrue = JSON.stringify(songs) === JSON.stringify(data)
-
   return (
     <div className="max-w-[200px] w-full">
       <div className=" w-full h-full max-w-[200px] max-h-[200px] relative rounded-lg cursor-pointer overflow-hidden group">

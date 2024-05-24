@@ -97,7 +97,6 @@ export function extractDate(isoString) {
     };
     // Tách các tên ca sĩ bằng dấu phẩy và loại bỏ khoảng trắng thừa
     const singers = name_singer.split(',').map(name => name.trim());
-    console.log("🚀 ~ renderSingerLinks ~ singers:", singers)
     // Render các thẻ <Link> cho từng tên ca sĩ
     return singers.map((singer, index) => (
       <Link

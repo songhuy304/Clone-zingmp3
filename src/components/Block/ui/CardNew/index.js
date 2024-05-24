@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { Favourite, More, Play } from '~/assets';
+import {  Play } from '~/assets';
 import { extractDate, renderSingerLinks } from '~/contanst';
 import { useMusicCommon } from '~/context/MusicContext';
 import ButtonWave from '../buttonWave';
