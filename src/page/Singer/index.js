@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CardSinger from '~/components/Block/ui/CardSinger';
-import { useParams } from 'react-router-dom';
+import { useParams  , useLocation } from 'react-router-dom';
 import { SearchApi } from '~/Api';
 export default function SingerDetail() {
 
@@ -8,8 +8,9 @@ export default function SingerDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { slug_name_singer } = useParams();
-  const userSinger = dataParam && dataParam.length > 0 ? dataParam[dataParam.length - 1]?.name_singer : null;
-
+  const location = useLocation();
+  const singerName =  location.state?.singer_name
+  
   useEffect(() => {
     const fetchArtistData = async () => {
       try {
@@ -43,7 +44,7 @@ export default function SingerDetail() {
             <div className="flex items-center gap-4 ">
               {/* Lặp qua mảng và hiển thị thuộc tính subscribe */}
               <h3 className="w-fit text-2xl md:text-[60px] font-bold leading-normal text-white">
-                {userSinger}
+                {singerName}
               </h3>
               <span>
                 <img src="/images/PlaySingger.svg" alt="" />

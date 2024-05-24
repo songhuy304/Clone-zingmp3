@@ -1,4 +1,13 @@
 import { ALL_NATIONAL, BUTTON_RENDER_SELECT_NATIONAL, KPOP_NATIONAL, LOBAl, USUK_NATIONAL, VPOP_NATIONAL } from "~/contanst";
+import { accountApi } from '~/Api'
+import { useAuth } from "~/context/AuthContext";
+import { useMusicCommon } from "~/context/MusicContext";
+import { toast } from 'react-toastify';
+
+
+const storedToken = localStorage.getItem("accessToken");
+
+
 
 export const handleFilterSongTrending = (data = [], paramsFilter) => {
     const dataFilter = data.filter((item) => {
@@ -65,3 +74,11 @@ export const handlegetLocal = () => {
   return songLocal;
 }
  
+
+// export const HandleLike = async () => {
+//   if(storedToken && )
+
+// }
+
+
+

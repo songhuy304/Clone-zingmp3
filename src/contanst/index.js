@@ -101,15 +101,28 @@ export function extractDate(isoString) {
       <Link
         key={index}
         to={`/${singer.replace(/\s+/g, '-').toLowerCase()}`}
+        state={{singer_name: singer}}
         className="line-clamp-1 inline-block cursor-pointer text-gray-600 text-xs font-semibold hover:underline hover:opacity-100"
       >
         {singer},
       </Link>
     ));
   };
+ 
   export function formatDuration(durationSeconds) {
     const minutes = Math.floor(durationSeconds / 60);
     const seconds = Math.floor(durationSeconds % 60);
     const formattedSeconds = seconds.toString().padStart(2, '0');
     return `${minutes}:${formattedSeconds}`;
+  };
+
+
+  export function formatRegexSearch(value){
+    let newQuery = value
+    ?.trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '-');
+    return newQuery;
   }

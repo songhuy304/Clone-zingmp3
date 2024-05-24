@@ -5,6 +5,7 @@ import Search from '~/components/Block/Search'
 import Avata from '~/components/Block/avata'
 import { Button , Button2 } from '~/components/Block/ui'
 import { LuSettings } from "react-icons/lu";
+import { HiOutlineBars3 } from "react-icons/hi2";
 
 
 function Header() {
@@ -25,9 +26,10 @@ function Header() {
     <div
       className={`${
         scrolled ? "shadow-xl bg-custom-gradient" : ""
-      } sticky z-10 top-0 h-[70px] backdrop-blur-[50px] px-14 transition-all duration-300 w-full `}
+      } fixed w-full lg:w-[calc(100%_-_240px)] z-10 top-0 right-0 h-[70px] backdrop-blur-[50px] p-4 md:px-[60px] transition-all duration-300 bg-[100%,200%]`}
     >
-      <div className="flex flex-grow items-center justify-between shadow-2 py-4">
+      <div className="flex flex-grow items-center justify-between shadow-2">
+          <HiOutlineBars3 className='md:hidden inline-block w-8 h-8 text-white my-auto' />
         <Search />
         <div className="flex gap-5 items-center justify-center">
           <div className="hidden lg:flex gap-3">
@@ -38,8 +40,7 @@ function Header() {
                 <LuSettings className="w-5 h-5 text-white" />
               </div>
             </Tippy>
-              <Avata />
-      
+            <Avata />
           </div>
         </div>
       </div>

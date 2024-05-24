@@ -6,7 +6,7 @@ import NewMusic from "~/components/Block/Newmusic";
 
 function Home() {
   return (
-    <div className="h-full pt-20 px-4 md:px-14 w-full">
+    <div className="">
       <Banner />
       <div className="mt-12">
         <BanMuonNghe />

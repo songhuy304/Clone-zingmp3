@@ -16,14 +16,16 @@ const Sidebar = () => {
     <div
       className={`
       lg:w-[240px] sm:w-16 hidden
-       h-[calc(100vh_-_90px)] bg-[rgba(0,0,0,0.25)] shadow-lg fixed top-0 left-0 sm:flex flex-col pt-5 text-white `}
+       h-[calc(100vh_-_90px)] bg-[rgba(0,0,0,0.25)] z-30 shadow-lg sm:flex flex-col pt-5 text-white `}
     >
       <div className="w-full h-[70px] lg:py-[15px] max-lg:p-2 lg:px-[25px] flex justify-center items-center">
-        <img
-          src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg"
-          alt=""
-          className="hidden lg:inline-block w-[120px] object-contain"
-        ></img>
+        <Link to={'/'}>
+          <img
+            src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/backgrounds/logo-dark.svg"
+            alt=""
+            className="hidden lg:inline-block w-[120px] object-contain hover:opacity-85 cursor-pointer"
+          ></img>
+        </Link>
         <Link className="animate-spin" to="/">
           <img
             src="https://zjs.zmdcdn.me/zmp3-desktop/releases/v1.10.28/static/media/icon_zing_mp3_60.f6b51045.svg

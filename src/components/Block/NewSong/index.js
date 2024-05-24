@@ -50,7 +50,7 @@ useEffect(() => {
           {RenderButtonSelect(paramsFilter, onHandleSelectNational)}
         </div>
       </div>
-      <div className="md:grid-cols-3 grid-cols-1 grid  gap-5">
+      <div className="md:grid-cols-3 grid-cols-1 grid justify-items-start gap-5">
         {dataSliceRenderRender.map((item, index) => (
           <CardTop key={index} listdata={dataSliceRenderRender} data={item} />
         ))}

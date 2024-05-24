@@ -3,8 +3,9 @@ import { More, Play } from '~/assets';
 import { renderSingerLinks } from '~/contanst';
 import { useMusicCommon } from '~/context/MusicContext';
 import { ButtonWave } from '~/components/Block/ui';
+import LikeMusic from '~/Feature/handleLike';
 
-export default function CardSinger({ listdata, data}) {
+export default function CardSinger({ listdata, data , isThuvien}) {
   const {
     audioSettings,
     handlePlaying,
@@ -55,7 +56,10 @@ export default function CardSinger({ listdata, data}) {
             </div>
           </div>
         </div>
-        <div className='flex grow-0 shrink-0 basis-auto'>
+        <div className='flex items-center grow-0 shrink-0 basis-auto'>
+        {isThuvien && 
+        <LikeMusic songId={data?._id} />
+        }
           <span className="hidden group/edit group-hover/item:block">
             <More />
           </span>

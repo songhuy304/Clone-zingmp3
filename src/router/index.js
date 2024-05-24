@@ -21,7 +21,7 @@ export const links = [
     path: "/thu-vien",
     link: true,
     icon: <ThuVien className="w-6 h-6" />,
-    component: Home,
+    component: Favourite,
     layout: 1,
     protect: true
   },

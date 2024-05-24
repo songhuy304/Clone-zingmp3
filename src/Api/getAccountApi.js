@@ -53,4 +53,17 @@ export const accountApi = {
     );
     return result;
   },
+  async createSongFavoriteUser(accessToken, _id) {
+    const result = await httpRequest.post(
+      "/favorite/create/",
+      { idMusic: _id, Response: { message: "Create favorite success" } },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-type": "application/json",
+        },
+      }
+    );
+    return result;
+  },
 };

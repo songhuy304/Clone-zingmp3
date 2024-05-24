@@ -1,5 +1,6 @@
 // src/AuthContext.js
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { accountApi } from "~/Api";
 
 const AuthContext = createContext();
 
@@ -8,21 +9,39 @@ export const AuthProvider = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
   const [accessToken, setAccessToken] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [favouriteMusic , setFavouriteMusic] = useState();
   const [swap, setSwap] = useState("login");
-
+  
   useEffect(() => {
     const storedToken = localStorage.getItem("accessToken");
     const storedUser = localStorage.getItem("user");
-
     if (storedToken) {
       setAccessToken(storedToken);
     }
-
     if (storedUser) {
       setUser(JSON.parse(storedUser));
       setIsLogin(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (!accessToken) {
+      const mess = 'Chưa Đăng nhập';
+      return; // Không trả về giá trị gì từ useEffect nếu không có accessToken
+    }
+  
+    const fetchDataList = async () => {
+      try {
+        const res = await accountApi.getSongFavorite(accessToken);
+        const favoriteMusicIds = res.data.map(item => item.id_music);
+        setFavouriteMusic(favoriteMusicIds);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchDataList();
+  }, [accessToken]); // Chỉ thêm accessToken vào dependency array
 
   const SetUser = (userData) => {
     setUser(userData.data);
@@ -58,6 +77,8 @@ export const AuthProvider = ({ children }) => {
         setSwap,
         setIsModalOpen,
         swap,
+        favouriteMusic,
+        setFavouriteMusic
       }}
     >
       {children}

@@ -64,13 +64,14 @@ export function useMusicPlayer() {
     }));
 
     if (audioRef.current) {
-      const { name_music, image_music, name_singer, slug_name_singer , src_music } = song; // Sử dụng song thay vì audioSettings.songs
+      const { name_music, image_music, name_singer, slug_name_singer , src_music , _id } = song; // Sử dụng song thay vì audioSettings.songs
       const songLocal = {
         src_music,
         name_music,
         image_music,
         name_singer,
         slug_name_singer,
+        _id
       };
       handlesetLocal(songLocal); // Đảm bảo hàm handlesetLocal được định nghĩa và có sẵn
       audioRef.current.src = song.src_music;

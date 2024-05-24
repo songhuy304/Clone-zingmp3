@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import LikeMusic from "~/Feature/handleLike";
 import { Favourite, More } from "~/assets";
 import { renderSingerLinks } from "~/contanst";
 import { useMusicCommon } from "~/context/MusicContext";
@@ -9,7 +9,8 @@ export default function DetailPlaybar() {
     name_music = '',
     image_music = '',
     name_singer = '',
-    slug_name_singer = ''
+    slug_name_singer = '',
+    _id
 } = audioSettings?.songs || {};
 
   return (
@@ -33,7 +34,7 @@ export default function DetailPlaybar() {
         </div>
       </div>
       <div className="flex items-center justify-center h-full">
-        <Favourite />
+        <LikeMusic songId={_id} />
         <span className="hidden lg:inline-block">
           <More />
         </span>

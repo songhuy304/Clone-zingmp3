@@ -1,5 +1,4 @@
 import React from "react";
-import Skeleton from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 import { Play , More , Favourite } from "~/assets";
 import { renderSingerLinks } from "~/contanst";
@@ -16,7 +15,7 @@ export default function CardItem({listData, data , loading}) {
 
   return (
     <div className="max-w-[200px] w-full overflow-hidden">
-      <div className="max-w-[200px] max-h-[200px] relative rounded-lg cursor-pointer overflow-hidden group">
+      <div className=" w-full h-full max-w-[200px] max-h-[200px] relative rounded-lg cursor-pointer overflow-hidden group">
         <Link to="/" className="block">
           <img
             className={`${
@@ -37,7 +36,10 @@ export default function CardItem({listData, data , loading}) {
           {isTrue ? (
             <ButtonWave isButton={true} />
           ) : (
-            <span  onClick={() => handlePlaying(data, listData)} className="pointer-events-auto hover:opacity-85">
+            <span
+              onClick={() => handlePlaying(data, listData)}
+              className="pointer-events-auto hover:opacity-85"
+            >
               <Play />
             </span>
           )}
@@ -49,10 +51,14 @@ export default function CardItem({listData, data , loading}) {
       </div>
       <div className="py-2">
         <Link
-          to={loading ? "/" : data?.slug_name_singer || data?.slug_name_music}
+          to={`/${
+            data?.lug_name_singer ||
+            data?.lug_subscribe
+        }`}
+       
           className="block font-bold text-sm whitespace-nowrap overflow-hidden text-white"
         >
-          {loading ? <Skeleton className="w-64" /> : data?.name_music}
+          {data?.name_music || "s10"}
         </Link>
         <div className="block font-medium text-sm text-gray-500 w-full overflow-hidden">
           <div className="line-clamp-2">
