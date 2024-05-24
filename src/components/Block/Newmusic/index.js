@@ -33,10 +33,10 @@ export default function NewMusic() {
               drag: true,
             },
     
-            "(min-width: 481px)": {
+            "(min-width: 680px)": {
               slides: { perView: 2, spacing: 10 },
             },
-            "(min-width: 1130px)": {
+            "(min-width: 1280px)": {
               slides: { perView: 3, spacing: 15 },
             },
           },
@@ -49,6 +49,7 @@ export default function NewMusic() {
           <div ref={sliderRef} className="keen-slider">
             {data.map((item, index) => (
               <CardNew
+                listData={data}
                 key={index}
                 classname={`keen-slider__slide number-slide${index + 1}`}
                 data={item}

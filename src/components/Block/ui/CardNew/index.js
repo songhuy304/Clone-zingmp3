@@ -1,9 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Play } from '~/assets';
+import { Favourite, More, Play } from '~/assets';
 import { extractDate, renderSingerLinks } from '~/contanst';
+import { useMusicCommon } from '~/context/MusicContext';
+import ButtonWave from '../buttonWave';
 
-export default function CardNew({data , index ,classname , listdata}) {
+export default function CardNew({data , index ,classname , listData}) {
+  const {
+    audioSettings,
+    handlePlaying,
+  } = useMusicCommon();
+  const { songs } = audioSettings;
+  const isTrue = JSON.stringify(songs) === JSON.stringify(data)
+  
     const CreateTime =  extractDate(data?.createdAt);
     return (
       <div
@@ -17,10 +26,22 @@ export default function CardNew({data , index ,classname , listdata}) {
                 className="w-full h-full object-cover group-hover:brightness-50 group-hover:scale-110 transition-transform"
                 alt=""
               />
-              <div className="absolute inset-0 flex gap-3 items-center text-white justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                <span className="pointer-events-auto hover:opacity-85">
-                  <Play />
-                </span>
+              <div
+                className={`${
+                  isTrue ? "opacity-100" : ""
+                } absolute inset-0 flex gap-3 items-center text-white justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`}
+              >
+               
+                {isTrue ? (
+                  <ButtonWave isButton={true} />
+                ) : (
+                  <span
+                    onClick={() => handlePlaying(data, listData)}
+                    className="pointer-events-auto hover:opacity-85"
+                  >
+                    <Play />
+                  </span>
+                )}
               </div>
             </div>
           </div>

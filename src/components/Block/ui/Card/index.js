@@ -14,8 +14,8 @@ export default function CardItem({listData, data , loading}) {
   const isTrue = JSON.stringify(songs) === JSON.stringify(data)
 
   return (
-    <div className="max-w-[200px] w-full overflow-hidden">
-      <div className=" w-full h-full max-w-[200px] max-h-[200px] relative rounded-lg cursor-pointer overflow-hidden group">
+    <div className="max-w-[200px] w-full ">
+      <div className=" w-full max-w-[200px] max-h-[200px] relative rounded-lg cursor-pointer overflow-hidden group">
         <Link to="/" className="block">
           <img
             className={`${
@@ -52,8 +52,8 @@ export default function CardItem({listData, data , loading}) {
       <div className="py-2">
         <Link
           to={`/${
-            data?.lug_name_singer ||
-            data?.lug_subscribe
+            data?.slug_name_singer ||
+            data?.slug_subscribe
         }`}
        
           className="block font-bold text-sm  whitespace-nowrap truncate text-white"

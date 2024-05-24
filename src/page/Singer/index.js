@@ -53,16 +53,16 @@ export default function SingerDetail() {
                 <img src="/images/PlaySingger.svg" alt="" />
               </span>
             </div>
-            <div className="flex gap-4 items-center font-medium text-sm text-white">
+            <div className="flex gap-4 items-center font-medium text-xs md:text-sm text-white">
               <span>200.000 người quan tâm</span>
-              <button className="h-[28px] px-6 py-1 text-xs border border-gray-600 rounded-full hover:opacity-90">
+              <button className="h-[28px] whitespace-nowrap px-6 py-1 text-xs border border-gray-600 rounded-full hover:opacity-90">
                 Quan tâm
               </button>
             </div>
           </div>
         </div>
       </div>
-      <div className="py-6 px-14">
+      <div className="py-6 px-2 md:px-14">
         <h3 className="mb-5 text-xl text-white font-bold">Bài Hát Nổi Bật</h3>
         <div className="grid-cols-1 grid md:grid-cols-2 gap-x-2">
           {dataParam.map((item, index) => (

@@ -18,6 +18,8 @@ export default function CardNgheSi({listData, data , loading}) {
       <div className=" w-full h-full max-w-[200px] max-h-[200px] relative rounded-lg cursor-pointer overflow-hidden group">
         <Link
           to={`/${data?.slug_banner_singer_popular}`}
+          state={{singer_name: data?.name_singer}}
+
         >
           <img
             className={`
@@ -48,6 +50,7 @@ export default function CardNgheSi({listData, data , loading}) {
       <div className="py-2">
         <Link
           to={`/${data?.slug_banner_singer_popular || data?.slug_subscribe}`}
+          state={{singer_name: data?.name_singer}}
           className="cursor-pointer hover:underline block font-bold text-sm  text-white"
         >
           {data?.name_music || "s10"}

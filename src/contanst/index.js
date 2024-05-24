@@ -92,15 +92,17 @@ export function extractDate(isoString) {
 
   export const renderSingerLinks = (name_singer) => {
     if (!name_singer) return 'Lỗi';
-    
+    const removeDiacritics = (str) => {
+      return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    };
     // Tách các tên ca sĩ bằng dấu phẩy và loại bỏ khoảng trắng thừa
     const singers = name_singer.split(',').map(name => name.trim());
-  
+    console.log("🚀 ~ renderSingerLinks ~ singers:", singers)
     // Render các thẻ <Link> cho từng tên ca sĩ
     return singers.map((singer, index) => (
       <Link
         key={index}
-        to={`/${singer.replace(/\s+/g, '-').toLowerCase()}`}
+        to={`/${singer.replace(/\s+/g, '-').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`}
         state={{singer_name: singer}}
         className="line-clamp-1 inline-block cursor-pointer text-gray-600 text-xs font-semibold hover:underline hover:opacity-100"
       >
@@ -108,7 +110,15 @@ export function extractDate(isoString) {
       </Link>
     ));
   };
- 
+  function toSlug(str) {
+    // Thay thế các khoảng trắng bằng dấu gạch ngang
+    let slug = str.replace(/\s+/g, '-').toLowerCase();
+    
+    // Loại bỏ dấu tiếng Việt
+    slug = slug.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    
+    return slug;
+}
   export function formatDuration(durationSeconds) {
     const minutes = Math.floor(durationSeconds / 60);
     const seconds = Math.floor(durationSeconds % 60);
