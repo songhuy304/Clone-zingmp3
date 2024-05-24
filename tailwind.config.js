@@ -20,5 +20,6 @@ module.exports = {
       addUtilities(newUtilities, ['responsive', 'hover']);
     },
     // require('tailwind-scrollbar'),
+    require('tailwindcss-animated')
   ],
 }

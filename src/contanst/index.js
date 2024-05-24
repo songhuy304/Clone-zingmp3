@@ -126,3 +126,41 @@ export function extractDate(isoString) {
     .replace(/\s+/g, '-');
     return newQuery;
   }
+  export const BANNER_SINGER_POPULAR = [
+    {
+      image_music: '/images/sontung.jpg',
+        name_singer: 'Sơn Tùng',
+        slug_banner_singer_popular: 'son-tung-m-tp',
+        name_music: 'Những Bài Hát Hay Nhất Của Sơn Tùng',
+    },
+    {
+      image_music: '/images/Alan.jpg',
+        name_singer: 'Alan Walker',
+        slug_banner_singer_popular: 'alan-walker',
+        name_music: 'Những Bài Hát Hay Nhất Của Alan Walker',
+    },
+    {
+        image_music: '/images/banner-jack-97.jpg',
+        name_singer: 'Jack 97',
+        slug_banner_singer_popular: 'jack',
+        name_music: 'Những Bài Hát Hay Nhất Của Jack',
+    },
+    {
+        image_music: '/images/banner-phan-manh-quynh.jpg',
+        name_singer: 'Phan Mạnh Quỳnh',
+        slug_banner_singer_popular: 'phan-manh-quynh',
+        name_music: 'Những Bài Hát Hay Nhất Của Phan Mạnh Quỳnh',
+    },
+    {
+        image_music: '/images/le-bao-binh-3.jpeg',
+        name_singer: 'Lê Bảo Bình',
+        slug_banner_singer_popular: 'le-bao-binh',
+        name_music: 'Những Bài Hát Hay Nhất Của Lê Bảo Bình',
+    },
+    {
+      image_music: '/images/banner-ho-quang-hieu.jpg',
+      name_singer: 'Hồ Quang Hiếu',
+      slug_banner_singer_popular: 'ho-quang-hieu',
+      name_music: 'Những Bài Hát Hay Nhất Của Lê Bảo Bình',
+  }
+];

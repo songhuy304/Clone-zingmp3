@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import CardSinger from '~/components/Block/ui/CardSinger';
 import { useParams  , useLocation } from 'react-router-dom';
 import { SearchApi } from '~/Api';
+import Index from '~/components/loading';
+
+
 export default function SingerDetail() {
 
   const [dataParam, setDataParam] = useState(null);
@@ -27,7 +30,7 @@ export default function SingerDetail() {
     fetchArtistData();
   }, [slug_name_singer]);
   if (loading) {
-    return <div>Loading...</div>;
+    return <Index />;
   }
   return (
     <div>

@@ -6,10 +6,13 @@ import Avata from '~/components/Block/avata'
 import { Button , Button2 } from '~/components/Block/ui'
 import { LuSettings } from "react-icons/lu";
 import { HiOutlineBars3 } from "react-icons/hi2";
+import HeaderMobile from './headerMobile';
 
 
 function Header() {
+  const [open , setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     const onScroll = () => {
       if (window.scrollY > 30) {
@@ -28,8 +31,12 @@ function Header() {
         scrolled ? "shadow-xl bg-custom-gradient" : ""
       } fixed w-full lg:w-[calc(100%_-_240px)] z-10 top-0 right-0 h-[70px] backdrop-blur-[50px] p-4 md:px-[60px] transition-all duration-300 bg-[100%,200%]`}
     >
+      {open && <HeaderMobile setOpen={setOpen} />}
       <div className="flex flex-grow items-center justify-between shadow-2">
-          <HiOutlineBars3 className='md:hidden inline-block w-8 h-8 text-white my-auto' />
+        <HiOutlineBars3
+          onClick={() => setOpen(true)}
+          className="md:hidden inline-block w-8 h-8 text-white my-auto"
+        />
         <Search />
         <div className="flex gap-5 items-center justify-center">
           <div className="hidden lg:flex gap-3">

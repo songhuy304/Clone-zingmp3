@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { Button } from "~/components/Block/ui";
 import CardSinger from "~/components/Block/ui/CardSinger";
 import { accountApi } from "~/Api";
-
+import Index from "~/components/loading";
 function Favorite() {
   const { accessToken ,favouriteMusic } = useAuth();
   const navigate = useNavigate();
@@ -23,6 +23,8 @@ function Favorite() {
             const music = res.data.map((item) => item.music);
             setData(music);
           }
+        setLoading(false);
+
         } catch (error) {
           console.error(error);
         }
@@ -33,6 +35,10 @@ function Favorite() {
       toast.info("Vui lòng đăng nhập để sử dụng chức năng này!");
     }
   }, [array]);
+
+  if(loading) {
+    return <Index />
+  }
   return (
     <>
       <div className="flex items-center gap-4 pt-10 ">

@@ -6,11 +6,8 @@ import { IoAddCircle } from "react-icons/io5";
 import { FaArrowRight } from "react-icons/fa6";
 
 const Sidebar = () => {
-
-
     const Use = useLocation();
     const location = Use.pathname;
-
     const [open , setOpen] = useState(true);
   return (
     <div

@@ -18,7 +18,7 @@ export default function CardTop({listdata , data }) {
         JSON.stringify(songs) === JSON.stringify(data)
           ? "bg-[rgba(0,0,0,0.25)]"
           : ""
-      } w-full max-w-[390px] mx-auto p-2 group/item hover:bg-[rgba(0,0,0,0.25)] rounded-lg border-b border-[hsla(0,0%,100%,.1)]`}
+      } w-full  mx-auto p-2 group/item hover:bg-[rgba(0,0,0,0.25)] rounded-lg border-b border-[hsla(0,0%,100%,.1)]`}
     >
       <div className="flex gap-3 rounded-xl items-center justify-between">
         <div className="flex gap-4">
